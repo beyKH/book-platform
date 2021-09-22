@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="m-0" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,41 +7,80 @@
   <title>JS starter || Bootstap 5</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="img/books/logo.png">
+  <style>
+    body{
+      color: #f4f7fd;
+    }
+    body::-webkit-scrollbar {
+    width: 5px;
+    }
+
+    body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(245, 221, 3, 0.3);
+    }
+
+    body::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 156, 8);
+    border: none;
+    border-radius: 50px;
+    }
+
+    .book__img{
+      object-fit:  cover;
+      object-position: center;
+      width: 100%;
+    }
+
+    .books__item{
+      -webkit-transition: .3s;
+      transition: box-shadow 0.3s;
+      overflow: hidden;
+      box-shadow: 0px 5px 20px rgb(209 213 223 / 50%);
+      border-radius: 5px;
+    }
+
+    .books__item:hover{
+      box-shadow: 0px 10px 25px rgb(209 213 223 / 60%)
+    }
+  </style>
 </head>
-<body>
+<body class="m-0 p-0">
+  <header class="header py-3 mb-4">
+    <h1 class="h2 text-warning text-uppercase m-0 text-center">Book</h1>
+  </header>
 
-  <div class="container-made container-sm py-5">
+  <main>
+    <div class="container">
 
-    <h1 class="text-center mb-5">TOPIC</h1>
+      <!-- SEMANTIC -->
+      <h2 class="visually-hidden">This is very good book</h2>
 
-    <form class="js-form" action="https://echo.htmlacademy.ru" method="GET">
-       <div class="box row">
+      <!-- BOOKS LIST -->
+      <div class="books books-wrapper row">
+        <!-- BOOK ITEM -->
+        <div class="col-md-4 col-lg-3">
+          <div class="books__item book d-flex flex-column bg-white h-100 border-0">
+            <img class="book__img d-block" src="img/books/the-idiot.jpg" alt="" height="250">
+            <div class="book__wrapper text-secondary py-2 px-3">
+              <h3 class="book__author h6">Asadbek Makhmudjonov</h3>
 
-        <div class="col-lg-4">
-          <input class="js-input form-control col-lg-4 d-block mb-2" type="text" required>
+            </div>
+          </div>
         </div>
-
-         <div class="col-lg-4">
-           <button class="js-submit btn-danger form-control col-lg-4" type="submit">Submit</button>
-         </div>
-
-        <div class="col-lg-4">
-          <output class="output-wrapper form-control col-lg-4 d-block mb-2">
-            <span>Result: </span>
-            <span class="js-output"></span>
-          </output>
+        <div class="col-md-4 col-lg-3">
+          <div class="books__item book bg-white">
+              <img class="book__img d-block" src="img/books/the-iliad-of-homer.jpg" alt="" height="250">
+            <div class="book__wrapper text-secondary py-2 px-3">
+              <p class="book__author ">Asadbek Makhmudjonov</p>
+            </div>
+          </div>
         </div>
-
-
-
-
-       </div>
-    </form>
-
-
-  </div>
-
+      </div>
+    </div>
+  </main>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/books.json"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
