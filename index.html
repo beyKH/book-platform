@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JS starter || Bootstap 5</title>
+  <title>Book platform</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="img/books/logo.png">
@@ -43,11 +43,15 @@
     .books__item:hover{
       box-shadow: 0px 10px 25px rgb(209 213 223 / 60%)
     }
+
+    .book__details{
+      font-size: 14px !important;
+    }
   </style>
 </head>
 <body class="m-0 p-0">
   <header class="header py-3 mb-4">
-    <h1 class="h2 text-warning text-uppercase m-0 text-center">Book</h1>
+    <h1 class="h2 text-uppercase m-0 text-center text-secondary">Book 24</h1>
   </header>
 
   <main>
@@ -62,20 +66,35 @@
         <div class="col-md-4 col-lg-3">
           <div class="books__item book d-flex flex-column bg-white h-100 border-0">
             <img class="book__img d-block" src="img/books/the-idiot.jpg" alt="" height="250">
-            <div class="book__wrapper text-secondary py-2 px-3">
-              <h3 class="book__author h6">Asadbek Makhmudjonov</h3>
+            <div class="book__wrapper text-secondary py-4 px-3">
+              <div class="book__details d-flex justify-content-between mb-2">
+                <span class="d-flex align-items-center">
+                  2019
+                <img class="ms-1" src="img/icons/date.svg" alt="icon date" width="14" height="14">
+                </span>
+                <span>202
+                <img class="ms-1" src="img/icons/pages.svg" alt="img of pages" width="16" height="16">
+                </span>
+                <span class="d-flex align-items-center">eng
+                <img class="ms-1" src="img/icons/language.svg" alt="img of language" width="16" height="16">
+                </span>
+              </div>
+              <h3 class="book__author text-primary h6 mb-3">Asadbek Makhmudjonov</h3>
+              <h4 class="book__title h6 mb-4">Things Fall Apart</h4>
 
+              <div class="d-flex">
+                <button class="btn btn-outline-primary me-2 flex-grow-1 d-flex align-items-center">Bookmark
+                  <img src="img/icons/bookmark.svg" alt="icon bookmark" width="20" height="20">
+                </button>
+                <button class="btn btn-outline-primary flex-grow-1 d-flex align-items-center">Wikipedia
+                  <img src="img/icons/link.svg" alt="icon link" width="20" height="20">
+                </button>
+
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-3">
-          <div class="books__item book bg-white">
-              <img class="book__img d-block" src="img/books/the-iliad-of-homer.jpg" alt="" height="250">
-            <div class="book__wrapper text-secondary py-2 px-3">
-              <p class="book__author ">Asadbek Makhmudjonov</p>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </main>
