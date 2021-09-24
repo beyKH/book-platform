@@ -12,18 +12,19 @@
     body{
       color: #f4f7fd;
     }
+
     body::-webkit-scrollbar {
-    width: 5px;
+      width: 5px;
     }
 
     body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(245, 221, 3, 0.3);
+      box-shadow: inset 0 0 6px rgba(245, 221, 3, 0.3);
     }
 
     body::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 156, 8);
-    border: none;
-    border-radius: 50px;
+      background-color: rgb(255, 156, 8);
+      border: none;
+      border-radius: 50px;
     }
 
     .book__img{
@@ -41,65 +42,228 @@
     }
 
     .books__item:hover{
-      box-shadow: 0px 10px 25px rgb(209 213 223 / 60%)
+      box-shadow: 0px 10px 25px rgb(209 213 223 / 60%);
     }
 
     .book__details{
       font-size: 14px !important;
     }
-  </style>
-</head>
-<body class="m-0 p-0">
-  <header class="header py-3 mb-4">
-    <h1 class="h2 text-uppercase m-0 text-center text-secondary">Book 24</h1>
-  </header>
 
-  <main>
-    <div class="container">
+    .book__author{
+      font-size: 14px;
+      font-weight: 400;
+    }
 
-      <!-- SEMANTIC -->
-      <h2 class="visually-hidden">This is very good book</h2>
+    @media only screen and (max-width: 575px){
+      .container-hand{
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .books__item{
+        display: flex;
+        flex-direction: row !important;
+      }
 
-      <!-- BOOKS LIST -->
-      <div class="books books-wrapper row">
-        <!-- BOOK ITEM -->
-        <div class="col-md-4 col-lg-3">
-          <div class="books__item book d-flex flex-column bg-white h-100 border-0">
-            <img class="book__img d-block" src="img/books/the-idiot.jpg" alt="" height="250">
-            <div class="book__wrapper text-secondary py-4 px-3">
-              <div class="book__details d-flex justify-content-between mb-2">
-                <span class="d-flex align-items-center">
-                  2019
-                <img class="ms-1" src="img/icons/date.svg" alt="icon date" width="14" height="14">
-                </span>
-                <span>202
-                <img class="ms-1" src="img/icons/pages.svg" alt="img of pages" width="16" height="16">
-                </span>
-                <span class="d-flex align-items-center">eng
-                <img class="ms-1" src="img/icons/language.svg" alt="img of language" width="16" height="16">
-                </span>
-              </div>
-              <h3 class="book__author text-primary h6 mb-3">Asadbek Makhmudjonov</h3>
-              <h4 class="book__title h6 mb-4">Things Fall Apart</h4>
+      .book__img{
+        flex-grow: 1;
+        width: auto;
+      }
 
-              <div class="d-flex">
-                <button class="btn btn-outline-primary me-2 flex-grow-1 d-flex align-items-center">Bookmark
-                  <img src="img/icons/bookmark.svg" alt="icon bookmark" width="20" height="20">
-                </button>
-                <button class="btn btn-outline-primary flex-grow-1 d-flex align-items-center">Wikipedia
-                  <img src="img/icons/link.svg" alt="icon link" width="20" height="20">
-                </button>
+      .book__wrapper{
+        flex-grow: 1;
+      }
+    }
 
+    @media only screen and (max-width: 400px){
+      .books__item{
+        flex-direction: column !important;
+      }
+      .book__img{
+        height: 300px;
+      }
+    }
+
+    </style>
+  </head>
+  <body class="m-0 p-0">
+    <div class="container-xl container-hand">
+    <header class="header py-3">
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary rounded-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="img/icons/logo.svg" alt="Site logo" width="35" height="30">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled text-white">Disabled</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
+      <form class="js-filter-form pt-3 py-2" action="https://echo.htmlacademy.ru" method="GET">
+        <div class="row">
+
+          <div class="col-sm-3 mb-3">
+            <input class="js-filter-search form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          </div>
+
+          <div class="col-sm-3 mb-3">
+            <select class="js-filter-language  me-5 form-control" name="sort" aria-label="sorting">
+              <option value="All">All</option>
+            </select>
+          </div>
+
+          <div class="col-sm-3 mb-3">
+            <input class=" form-control" type="number" aria-label="search-year" placeholder="Start year">
+          </div>
+          <div class="col-sm-3 mb-3">
+            <input class="form-control" type="number" aria-label="search-year" placeholder="End year">
+          </div>
+          <div class="col-sm-3 mb-3">
+            <input class="js-filter-country form-control" type="text" aria-label="search-country"
+              placeholder="Country">
+          </div>
+          <div class="col-sm-3 mb-3">
+            <input class="form-control" type="text" aria-label="search-language" placeholder="Language">
+          </div>
+
+          <div class="col-sm-3 flex-grow-1">
+            <button class="btn btn-primary w-100" type="submit">Search</button>
+          </div>
+
+
+
+        </div>
+
+      </form>
+    </header>
+
+    <main>
+
+
+        <!-- SEMANTIC -->
+        <h2 class="visually-hidden">This is very good book</h2>
+
+        <!-- BOOKS LIST -->
+        <div class="books books-wrapper row">
+          <!-- BOOK ITEM -->
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="books__item book d-flex flex-column bg-white h-100 border-0">
+              <img class="book__img d-block" src="img/books/the-idiot.jpg" alt="" height="250">
+              <div class="book__wrapper d-flex flex-grow-1 flex-column h-100 text-secondary py-4 px-3">
+                <h4 class="book__title h6 mb-3 h6">Things Fall Apart</h4>
+                <h3 class="book__author text-primary mb-3">Asadbek Makhmudjonov</h3>
+                <div class="book__details d-flex justify-content-between mb-3">
+                  <span class="book__year d-flex align-items-center">
+                    <img class="me-1" src="img/icons/date.svg" alt="icon date" width="14" height="14">
+                    2019
+                  </span>
+                  <span class="book__pages">
+                    <img class="me-1" src="img/icons/pages.svg" alt="img of pages" width="17" height="17">
+                    202
+                  </span>
+                  <span class="book__lang" class="d-flex align-items-center">
+                    <img class="me-1" src="img/icons/language.svg" alt="img of language" width="17" height="17">
+                    eng
+                  </span>
+                </div>
+
+                <div class="d-flex mt-auto">
+
+                  <button class="btn flex-grow-1 btn-outline-primary me-2 flex-grow-1 d-flex align-items-center justify-content-center">
+                   <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18"
+                     fill="currentColor">
+                     <path d="M0 0h24v24H0V0z" fill="none" />
+                     <path
+                       d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+                     </svg>
+                     add
+                  </button>
+
+                  <a class="book__wiki btn flex-grow-1 btn-outline-primary flex-grow-1 d-flex align-items-center justify-content-center">Wiki</a>
+
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-      </div>
+    </main>
     </div>
-  </main>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/books.json"></script>
-  <script src="js/main.js"></script>
-</body>
-</html>
+    <template class="book-template">
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="books__item book d-flex flex-column bg-white h-100 border-0">
+          <img class="book__img d-block" src="img/books/the-idiot.jpg" alt="" height="250">
+          <div class="book__wrapper d-flex flex-grow-1 flex-column h-100 text-secondary py-4 px-3">
+            <h4 class="book__title h6 mb-3 h6">Things Fall Apart</h4>
+            <h3 class="book__author text-primary mb-3">Asadbek Makhmudjonov</h3>
+            <div class="book__details d-flex justify-content-between mb-3">
+              <span class="book__year d-flex align-items-center">
+                <img class="me-1" src="img/icons/date.svg" alt="icon date" width="14" height="14">
+                2019
+              </span>
+              <span class="book__pages">
+                <img class="me-1" src="img/icons/pages.svg" alt="img of pages" width="17" height="17">
+                202
+              </span>
+              <span class="book__lang" class="d-flex align-items-center">
+                <img class="me-1" src="img/icons/language.svg" alt="img of language" width="17" height="17">
+                eng
+              </span>
+            </div>
+
+            <div class="d-flex mt-auto">
+
+              <button
+                class="btn flex-grow-1 btn-outline-primary me-2 flex-grow-1 d-flex align-items-center justify-content-center">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18"
+                  fill="currentColor">
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path
+                    d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+                </svg>
+                add
+              </button>
+
+              <a
+                class="book__wiki btn flex-grow-1 btn-outline-primary flex-grow-1 d-flex align-items-center justify-content-center" target="_blank">Wiki</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+  </html>
