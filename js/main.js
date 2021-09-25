@@ -22,7 +22,7 @@ let countryRegex;
 // FUNCTIONS CODE
 
 // CREATING AND ALL FILMS
-function createBookElement(givenBooks, titleRegex = "") {
+function showBooksElement(givenBooks, titleRegex = "") {
   elBooks.innerHTML = "";
   const elBooksFragment = document.createDocumentFragment();
   for (const book of givenBooks) {
@@ -104,14 +104,30 @@ function showCountries() {
 }
 
 // FUNCTION SORTING
-function sortingBook(books, elSearchFilter) {
+function sortBooks( books, elSearchFilter) {
 
-  if(elSearchFilter.value == "az"){
-     books.sort((a, b) => {
+  if( elSearchFilter.value === "newYear"){
+
+    books.sort((a,b) => b.year - a.year);
+
+  }else if( elSearchFilter.value === "oldYear"){
+
+    books.sort((a,b) => a.year - b.year);
+
+  } else if(elSearchFilter.value === "az"){
+
+    books.sort((a, b) => {
       if (a.title > b.title) return 1;
       if (a.title < b.title) return -1;
       return 0;
     });
+  }else if(elSearchFilter.value === "za"){
+
+    books.sort((a,b) =>{
+      if (a.title < b.title) return 1;
+      if (a.title > b.title) return -1;
+    });
+
   }
 
 }
@@ -124,11 +140,10 @@ function onBookSearchFormSubmit(evt) {
   // countryRegex = new RegExp(elSearchCountry.value.trim(), "gi");
 
 
-
   let foundBooks = findBook();
   if(foundBooks.length > 0){
-    sortingBook(books, elSearchFilter);
-    createBookElement(foundBooks, titleRegex);
+    sortBooks(foundBooks , elSearchFilter);
+    showBooksElement(foundBooks, titleRegex);
   }
 
 }
@@ -158,7 +173,7 @@ function findBook() {
       &&
 
       // FILTERING BY YEAR
-      (elSearchYear.value == "" ||  Number(elSearchYear.value) === book.year)
+      (elSearchYear.value.trim() == "" || book.year >= Number(elSearchYear.value))
 
       // &&
       // // FILTERING BY FILTER
@@ -176,7 +191,7 @@ gettingCountries();
 showCountries();
 gettingLanguages();
 showLanguages();
-createBookElement(books, titleRegex);
+showBooksElement(books, titleRegex);
 
 // ADDEVENT LISTENERS
 

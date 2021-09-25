@@ -1,3 +1,75 @@
-.container-made{
-  max-width: 800px;
+body {
+  color: #f4f7fd;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(245, 221, 3, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 156, 8);
+  border: none;
+  border-radius: 50px;
+}
+
+.book__img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.books__item {
+  -webkit-transition: .3s;
+  transition: box-shadow 0.3s;
+  overflow: hidden;
+  box-shadow: 0px 5px 20px rgb(209 213 223 / 50%);
+  border-radius: 5px;
+}
+
+.books__item:hover {
+  box-shadow: 0px 10px 25px rgb(209 213 223 / 60%);
+}
+
+.book__details {
+  font-size: 14px !important;
+}
+
+.book__author {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 575px) {
+  .container-hand {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .books__item {
+    display: flex;
+    flex-direction: row !important;
+  }
+
+  .book__img {
+    flex-grow: 1;
+    width: auto;
+  }
+
+  .book__wrapper {
+    flex-grow: 1;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .books__item {
+    flex-direction: column !important;
+  }
+
+  .book__img {
+    height: 300px;
+  }
 }
