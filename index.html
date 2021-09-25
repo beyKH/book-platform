@@ -132,31 +132,37 @@
       <form class="js-filter-form pt-3 py-2" action="https://echo.htmlacademy.ru" method="GET">
         <div class="row">
 
-          <div class="col-sm-3 mb-3">
+          <div class="col-sm-2 mb-3">
             <input class="js-filter-search form-control me-2" type="search" placeholder="Search" aria-label="Search">
           </div>
 
-          <div class="col-sm-3 mb-3">
+          <div class="col-sm-2 mb-3">
             <select class="js-filter-language  me-5 form-control" name="sort" aria-label="sorting">
-              <option value="All">All</option>
+              <option value="All">All languages</option>
             </select>
           </div>
 
-          <div class="col-sm-3 mb-3">
-            <input class=" form-control" type="number" aria-label="search-year" placeholder="Start year">
-          </div>
-          <div class="col-sm-3 mb-3">
-            <input class="form-control" type="number" aria-label="search-year" placeholder="End year">
-          </div>
-          <div class="col-sm-3 mb-3">
-            <input class="js-filter-country form-control" type="text" aria-label="search-country"
-              placeholder="Country">
-          </div>
-          <div class="col-sm-3 mb-3">
-            <input class="form-control" type="text" aria-label="search-language" placeholder="Language">
+          <div class="col-sm-2 mb-3">
+            <input class="js-search-year form-control" type="number" aria-label="search-year" placeholder="year">
           </div>
 
-          <div class="col-sm-3 flex-grow-1">
+          <div class="col-sm-2 mb-3">
+            <select class="js-filter-country  me-5 form-control" name="sort" aria-label="sorting">
+              <option value="All">All Countries</option>
+            </select>
+          </div>
+
+
+          <div class="col-sm-2 mb-3">
+            <select class="js-filter-specail  me-5 form-control" name="sort" aria-label="sorting">
+              <option value="default">default</option>
+              <option value="az">a-z</option>
+              <option value="year">by year</option>
+            </select>
+          </div>
+
+
+          <div class="col-sm-2 flex-grow-1">
             <button class="btn btn-primary w-100" type="submit">Search</button>
           </div>
 

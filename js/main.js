@@ -1,7 +1,6 @@
 // BOOKS
 let languages = [];
-let repateadLanguages = [];
-
+let countries = []
 
 
 // DOM
@@ -14,11 +13,14 @@ const elMainForm = document.querySelector(".js-filter-form");
 const elSearchInput = elMainForm.querySelector(".js-filter-search");
 const elSearchCountry = elMainForm.querySelector(".js-filter-country");
 const elSearchLanguagesSelect = elMainForm.querySelector(".js-filter-language");
+const elSearchYear = elMainForm.querySelector(".js-search-year");
+const elSearchFilter = elMainForm.querySelector(".js-filter-specail");
 
 // GLOBAL VARS
 let titleRegex;
 let countryRegex;
 // FUNCTIONS CODE
+
 // CREATING AND ALL FILMS
 function createBookElement(givenBooks, titleRegex = "") {
   elBooks.innerHTML = "";
@@ -27,8 +29,6 @@ function createBookElement(givenBooks, titleRegex = "") {
     elBookItem = elBookTemplate.cloneNode(true);
 
     elBookItem.querySelector(".book__img").src = `img/books/${book.imageLink}`;
-
-
 
 
     if(titleRegex.source !== "(?:)" && titleRegex){
@@ -50,7 +50,10 @@ function createBookElement(givenBooks, titleRegex = "") {
   elBooks.appendChild(elBooksFragment);
 }
 
+// GETTING LANGUAGES BY SINGLE
 function gettingLanguages() {
+  let repateadLanguages = [];
+
   books.forEach(book => {
     repateadLanguages.push(book.language);
   })
@@ -61,7 +64,9 @@ function gettingLanguages() {
   }
 }
 
+// SHOWING LANGUAGES TO USER
 function showLanguages() {
+
   const elLanguagesFragment = document.createDocumentFragment();
 
   for (const language of languages) {
@@ -73,6 +78,43 @@ function showLanguages() {
   elSearchLanguagesSelect.appendChild(elLanguagesFragment);
 }
 
+// GETTING COUNTRIES BY SINGLE
+function gettingCountries() {
+  books.forEach(book =>{
+    if(!countries.includes(book.country)){
+      countries.push(book.country);
+    }
+  });
+
+};
+
+// SHOWING COUNTRIES TO USER
+function showCountries() {
+  const elCountriesFragment = document.createDocumentFragment();
+
+  for (const country of countries) {
+    elCountryItem = document.createElement("option");
+    elCountryItem.textContent = country;
+    elCountryItem.value = country;
+    elCountriesFragment.appendChild(elCountryItem);
+  }
+
+  elSearchCountry.appendChild(elCountriesFragment);
+
+}
+
+// FUNCTION SORTING
+function sortingBook(books, elSearchFilter) {
+
+  if(elSearchFilter.value == "az"){
+     books.sort((a, b) => {
+      if (a.title > b.title) return 1;
+      if (a.title < b.title) return -1;
+      return 0;
+    });
+  }
+
+}
 
 //FIND BOOK
 function onBookSearchFormSubmit(evt) {
@@ -81,9 +123,14 @@ function onBookSearchFormSubmit(evt) {
   titleRegex = new RegExp(elSearchInput.value.trim(), "gi");
   // countryRegex = new RegExp(elSearchCountry.value.trim(), "gi");
 
+
+
   let foundBooks = findBook();
-  createBookElement(foundBooks, titleRegex);
-  console.log(elSearchCountry.value);
+  if(foundBooks.length > 0){
+    sortingBook(books, elSearchFilter);
+    createBookElement(foundBooks, titleRegex);
+  }
+
 }
 
 
@@ -91,11 +138,33 @@ function findBook() {
   return books.filter( book => {
 
     return  (
+
+      // FILTERING BY TITLE
       book.title.match(titleRegex)
+
       &&
-      book.country.match(elSearchCountry.value)
+
+
+      // FILTERING BY LANGUAGES
+      (elSearchLanguagesSelect.value === "All"
+      || book.language.includes(elSearchLanguagesSelect.value))
+
       &&
-      (elSearchLanguagesSelect.value === "All" || book.language.includes(elSearchLanguagesSelect.value)));
+
+      // FILTERING COUNTRY
+      (elSearchCountry.value === "All"
+      || book.country.includes(elSearchCountry.value))
+
+      &&
+
+      // FILTERING BY YEAR
+      (elSearchYear.value == "" ||  Number(elSearchYear.value) === book.year)
+
+      // &&
+      // // FILTERING BY FILTER
+
+
+      );
   })
 }
 
@@ -103,14 +172,16 @@ function findBook() {
 
 
 // FUNCTIONS RUN
+gettingCountries();
+showCountries();
 gettingLanguages();
 showLanguages();
 createBookElement(books, titleRegex);
 
-
 // ADDEVENT LISTENERS
 
 if(elMainForm){
+
   elMainForm.addEventListener("submit",  onBookSearchFormSubmit);
 }
 
