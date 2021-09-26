@@ -43,6 +43,11 @@ body::-webkit-scrollbar-thumb {
   font-weight: 400;
 }
 
+.btn-bookmark:hover{
+  background-color: rgba(99, 144, 212, 0.123) !important;
+  color: #0d6efd;
+}
+
 @media only screen and (max-width: 575px) {
   .container-hand {
     padding-left: 20px;

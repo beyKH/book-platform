@@ -1,4 +1,3 @@
-let b = "bek";
-
-b.split("b");
-console.log(b.replace("k","a"));
+let a = localStorage.getItem("bs") || [];
+// let bs = "[]";
+// console.log(JSON.parse(bs));

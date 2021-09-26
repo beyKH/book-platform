@@ -9,7 +9,7 @@ let books = [
         "title": "things fall apart",
         "year": 1958,
         "id": "bb1",
-        "bookmarked": false
+        "bookmarked": true
     },
     {
         "author": "Hans Christian Andersen",
@@ -33,7 +33,7 @@ let books = [
         "title": "the divine comedy",
         "year": 1315,
         "id": "bb3",
-        "bookmarked": false
+        "bookmarked": true
     },
     {
         "author": "Unknown",
@@ -45,7 +45,7 @@ let books = [
         "title": "the epic of gilgamesh",
         "year": -1700,
         "id": "bb4",
-        "bookmarked": false
+        "bookmarked": true
     },
     {
         "author": "Unknown",

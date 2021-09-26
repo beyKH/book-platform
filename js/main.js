@@ -1,8 +1,11 @@
 // BOOKS
+
+// localStorage.removeItem("bookmarks");
+let watchList =  JSON.parse(localStorage.getItem("bookmarks")) || [];
 let languages = [];
-let countries = []
+let countries = [];
 
-
+console.log(`Watch List:  ${watchList}`);
 // DOM
 // BOOKS LIST WRAPPER
 const elBooks = document.querySelector(".books");
@@ -42,6 +45,15 @@ function showBooksElement(givenBooks, titleRegex = "") {
     elBookItem.querySelector(".book__pages").textContent = book.page;
     elBookItem.querySelector(".book__lang").textContent = book.language;
     elBookItem.querySelector(".book__wiki").href = book.link;
+
+    elBookItem.querySelector(".js-btn-bookmark").dataset.id = book.id;
+
+    let isOnWatchList = watchList.find(watch => watch.id === book.id);
+    if(isOnWatchList){
+      elBookItem.querySelector(".js-btn-bookmark").classList.add("btn-primary");
+      elBookItem.querySelector(".js-btn-bookmark").classList.remove("btn-outline-primary");
+    }
+
 
     // ADDING TO THE FRAGMENT ITEMS
     elBooksFragment.appendChild(elBookItem);
@@ -175,16 +187,61 @@ function findBook() {
       // FILTERING BY YEAR
       (elSearchYear.value.trim() == "" || book.year >= Number(elSearchYear.value))
 
-      // &&
-      // // FILTERING BY FILTER
-
 
       );
   })
 }
 
+// LISTENT BOOKS CLICK
+function onClickBooksList(evt) {
+
+  if(evt.target.matches(".js-btn-bookmark")){
+
+    let objBook = books.find(book => book.id === evt.target.dataset.id);
+
+    if(evt.target.matches(".btn-outline-primary") ){
+      addToWatchlist(objBook.id);
+      evt.target.classList.add("btn-primary");
+      evt.target.classList.remove("btn-outline-primary");
+      objBook.bookmarked = true;
+      watchList.push(objBook);
+      localStorage.setItem("bookmarks", JSON.stringify(watchList));
+      console.log(`After add: ${watchList}`);
 
 
+    }else if(evt.target.matches(".btn-primary")){
+      evt.target.classList.remove("btn-primary");
+      evt.target.classList.add("btn-outline-primary");
+      objBook.bookmarked = false;
+      watchList.splice(removeFromWatchlist(objBook.id), 1);
+      console.log(`After remove: ${watchList}`);
+      localStorage.setItem("bookmarks", JSON.stringify(watchList));
+
+      // localStorage.setItem("wathchlist", JSON.stringify(watchList))
+    }
+
+  }
+}
+
+function addToWatchlist(bookId) {
+  return book = books.find(book => book.id === bookId);
+
+}
+function removeFromWatchlist(bookId) {
+  let index = watchList.findIndex(book => book.id === bookId);
+  return index;
+}
+
+
+// ADDEVENT LISTENERS
+
+if(elMainForm){
+  elMainForm.addEventListener("submit",  onBookSearchFormSubmit);
+}
+
+if(elBooks){
+  elBooks.addEventListener("click", onClickBooksList);
+}
 
 // FUNCTIONS RUN
 gettingCountries();
@@ -192,11 +249,3 @@ showCountries();
 gettingLanguages();
 showLanguages();
 showBooksElement(books, titleRegex);
-
-// ADDEVENT LISTENERS
-
-if(elMainForm){
-
-  elMainForm.addEventListener("submit",  onBookSearchFormSubmit);
-}
-
