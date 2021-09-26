@@ -33,7 +33,6 @@ function showBooksElement(givenBooks, titleRegex = "") {
 
     elBookItem.querySelector(".book__img").src = `img/books/${book.imageLink}`;
 
-
     if(titleRegex.source !== "(?:)" && titleRegex){
       elBookItem.querySelector(".book__title").innerHTML = book.title.replace(titleRegex, `<mark class="p-0 bg-warning">${titleRegex.source}</mark>`);
     }else{
@@ -187,7 +186,6 @@ function findBook() {
       // FILTERING BY YEAR
       (elSearchYear.value.trim() == "" || book.year >= Number(elSearchYear.value))
 
-
       );
   })
 }
@@ -199,37 +197,45 @@ function onClickBooksList(evt) {
 
     let objBook = books.find(book => book.id === evt.target.dataset.id);
 
+    // CHEKING TO ADD => ELSE IF CHECKING FOR REMOVING
     if(evt.target.matches(".btn-outline-primary") ){
-      addToWatchlist(objBook.id);
+      // ADD TO WATCHLIST
+      addToWatchlist(objBook);
+
+      // ADD TO FRONT
       evt.target.classList.add("btn-primary");
       evt.target.classList.remove("btn-outline-primary");
-      objBook.bookmarked = true;
-      watchList.push(objBook);
-      localStorage.setItem("bookmarks", JSON.stringify(watchList));
+
       console.log(`After add: ${watchList}`);
 
 
     }else if(evt.target.matches(".btn-primary")){
+      // REMOVE FROM WATHCLIST
+       removeFromWatchlist(objBook.id);
+
+      // REMOVE FROM FRONT
       evt.target.classList.remove("btn-primary");
       evt.target.classList.add("btn-outline-primary");
-      objBook.bookmarked = false;
-      watchList.splice(removeFromWatchlist(objBook.id), 1);
-      console.log(`After remove: ${watchList}`);
-      localStorage.setItem("bookmarks", JSON.stringify(watchList));
 
-      // localStorage.setItem("wathchlist", JSON.stringify(watchList))
+      console.log(`After remove: ${watchList}`);
+
     }
 
   }
 }
 
-function addToWatchlist(bookId) {
-  return book = books.find(book => book.id === bookId);
+function addToWatchlist(book) {
+  localStorage.setItem("bookmarks", JSON.stringify(watchList));
 
+  return watchList.push(book);
 }
+
 function removeFromWatchlist(bookId) {
   let index = watchList.findIndex(book => book.id === bookId);
-  return index;
+
+  localStorage.setItem("bookmarks", JSON.stringify(watchList));
+
+  return watchList.splice(index, 1);
 }
 
 
