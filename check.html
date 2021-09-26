@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="img/books/logo.png">
+  </head>
+</head>
+<body>
+
+  <div class="d-flex justify-content-center js-pagination">
+
+    <div class="page__item">
+      <a class="page-link js-pagination-start" href="#">Start</a>
+    </div>
+
+    <div class="page__item">
+      <a class="page-link js-pagination-prev" href="#">Prev</a>
+    </div>
+
+    <ul class="pagination js-pagination-list">
+
+    </ul>
+    <div class="page__item">
+      <a class="page-link js-pagination-next" href="#">Next</a>
+    </div>
+    <div class="page__item">
+      <a class="page-link js-pagination-end" href="#">End</a>
+    </div>
+  </div>
+
+
+  <template id="pagination-item-template">
+    <li class="page-item">
+      <a class="page-link js-pagination-page active" href="#">1</a>
+    </li>
+  </template>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/cheeck.js"></script>
+</body>
+</html>
