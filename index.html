@@ -102,34 +102,29 @@
   </header>
 
 <main>
-  <div class="d-flex justify-content-center js-pagination">
+ <div class="d-flex justify-content-center flex-wrap mb-3 js-pagination ">
 
-    <div class="page__item">
-      <a class="page-link js-pagination-start" href="#">Start</a>
-    </div>
+   <div class="d-flex mb-1 mb-md-0">
+     <div class="page__item">
+       <a class="page-link js-pagination-start" href="#">Start</a>
+     </div>
+     <div class="page__item">
+       <a class="page-link js-pagination-prev" href="#">Prev</a>
+     </div>
+   </div>
 
-    <div class="page__item">
-      <a class="page-link js-pagination-pre" href="#">Pre</a>
-    </div>
+   <ul class="pagination js-pagination-list ">
 
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link js-pagination-page " href="#">1</a>
-      </li>
-      <li class="page-item active">
-        <a class="page-link js-pagination-page " href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link js-pagination-page" href="#">3</a>
-      </li>
-    </ul>
-    <div class="page__item">
-      <a class="page-link js-pagination-next" href="#">Next</a>
-    </div>
-    <div class="page__item">
-      <a class="page-link js-pagination-end" href="#">End</a>
-    </div>
-  </div>
+   </ul>
+   <div class="d-flex mt-sm-1 mt-md-0">
+     <div class="page__item">
+       <a class="page-link js-pagination-next" href="#">Next</a>
+     </div>
+     <div class="page__item">
+       <a class="page-link js-pagination-end" href="#">End</a>
+     </div>
+   </div>
+ </div>
   <!-- SEMANTIC -->
   <h2 class="visually-hidden">This is TOP 100 books</h2>
 
@@ -179,8 +174,13 @@
 </div>
 </template>
 
+<template id="pagination-item-template">
+  <li class="page-item">
+    <a class="page-link js-pagination-page active" href="#">1</a>
+  </li>
+</template>
+
 <script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/cheeck.js"></script>
 <script src="js/books.js"></script>
 <script src="js/main.js"></script>
 </body>
